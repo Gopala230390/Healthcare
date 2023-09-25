@@ -25,9 +25,9 @@ pipeline {
             }
     }
     
-   /* stage('Publish Reports using HTML') {
+    stage('Publish Reports using HTML') {
       steps {
-      publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Banking-project/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+      publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Healthcare/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
             }
     }
     
@@ -49,7 +49,7 @@ pipeline {
         sh 'docker push swethamba859/healthcare-project:1.0'
             }
     } 
-        stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
+       /* stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
             steps {
                 dir('my-serverfiles'){
                 sh 'sudo chmod 600 jenkinskey.pem'
