@@ -49,7 +49,7 @@ pipeline {
         sh 'docker push swethamba859/healthcare-project:1.0'
             }
     } 
-       /* stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
+        stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
             steps {
                 dir('my-serverfiles'){
                 sh 'sudo chmod 600 jenkinskey.pem'
@@ -67,9 +67,9 @@ pipeline {
       }
         stage ('Deploy into test-server using Ansible') {
            steps {
-             ansiblePlaybook credentialsId: 'jenkinskey', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'banking playbook.yml'
+             ansiblePlaybook credentialsId: 'jenkinskey', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'healthcare-playbook.yml'
            }
-               }*/
+               }
      }
 
         }
