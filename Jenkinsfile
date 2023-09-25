@@ -14,7 +14,7 @@ pipeline {
    stage('CheckOut') {
       steps {
         echo 'Checkout the source code from GitHub'
-        git branch: 'master', url: 'https://github.com/swethaenukonda/Healthcare.git'
+        git branch: 'main', url: 'https://github.com/swethaenukonda/Healthcare.git'
             }
     }
     
