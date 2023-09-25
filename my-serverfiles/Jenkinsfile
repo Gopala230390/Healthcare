@@ -14,7 +14,7 @@ pipeline {
    stage('CheckOut') {
       steps {
         echo 'Checkout the source code from GitHub'
-        git branch: 'master', url: 'https://github.com/swethaenukonda/Banking-project.git'
+        git branch: 'master', url: 'https://github.com/swethaenukonda/Healthcare.git'
             }
     }
     
@@ -25,7 +25,7 @@ pipeline {
             }
     }
     
-    stage('Publish Reports using HTML') {
+   /* stage('Publish Reports using HTML') {
       steps {
       publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Banking-project/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
             }
@@ -33,7 +33,7 @@ pipeline {
     
    stage('Docker Image Creation') {
       steps {
-        sh 'docker build -t swethamba859/banking-project:1.0 .'
+        sh 'docker build -t swethamba859/healthcare-project:1.0 .'
             }
     }
     stage('DockerLogin') {
@@ -65,7 +65,7 @@ pipeline {
           kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")
         }
       }
-        /*stage ('Deploy into test-server using Ansible') {
+        stage ('Deploy into test-server using Ansible') {
            steps {
              ansiblePlaybook credentialsId: 'jenkinskey', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'banking playbook.yml'
            }
