@@ -70,15 +70,14 @@ pipeline {
 
       steps {
 
-        kubernetesDeploy(
-
           configs: 'kubernetes/deploymentservice.yml',
 
           kubeconfigId: 'kubernetes'
-        }
+        
       }
-     }
-
         }
-   }
+  }
+}
+
+  
           
