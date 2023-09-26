@@ -83,8 +83,10 @@ script{
         stage('Deploying App to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")*/
-        
+          kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")
+    }
+  }
+}*/
       }
         }
 
