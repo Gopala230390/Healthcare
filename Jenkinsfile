@@ -67,8 +67,9 @@ pipeline {
                }*/
     stage('Deploying App to Kubernetes') {
       steps {
-        
-          kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")
+        kubeconfig(serverUrl: 'https://192.168.49.2:8443') {
+  
+}
         sh "kubectl apply -f deploymentservice.yml/"
         }
       }
