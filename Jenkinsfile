@@ -59,22 +59,22 @@ pipeline {
                 }
             }
         }
-    /* stage('deploy the application to kubernetes'){
+     stage('deploy the application to kubernetes'){
 steps{
   sh 'sudo chmod 600 ./jenkinskey.pem'    
-  sh 'sudo scp -o StrictHostKeyChecking=no -i ./jenkinskey.pem deploymentservice.yml ubuntu@65.0.125.218:/home/ubuntu/'
+  sh 'sudo scp -o StrictHostKeyChecking=no -i ./jenkinskey.pem deploymentservice.yml ubuntu@13.232.173.95:/home/ubuntu/'
   
 script{
   try{
-  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@65.0.125.218 kubectl apply -f .'
+  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@13.232.173.95 kubectl apply -f .'
   }catch(error)
   {
-  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@65.0.125.218 kubectl apply -f .'
+  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@13.232.173.95 kubectl apply -f .'
   }
 }
 }
 }
-        stage ('Deploy into test-server using Ansible') {
+       /* stage ('Deploy into test-server using Ansible') {
            steps {
              ansiblePlaybook credentialsId: 'jenkinskey', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'healthcare-playbook.yml'
            }
