@@ -49,7 +49,7 @@ pipeline {
         sh 'docker push swethamba859/healthcare-project:1.0'
             }
     } 
-        /*stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
+        stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
             steps {
                 dir('my-serverfiles'){
                 sh 'sudo chmod 600 jenkinskey.pem'
@@ -58,7 +58,7 @@ pipeline {
                 sh 'terraform apply --auto-approve'
                 }
             }
-        }*/
+        }
      
         /*stage ('Deploy into test-server using Ansible') {
            steps {
@@ -66,18 +66,16 @@ pipeline {
            }
                }*/
   
-        stage('Deploy to Kubernetes') {
-
+        stage('Deploying App to Kubernetes') {
       steps {
-
-          configs: 'kubernetes/deploymentservice.yml',
-
-          kubeconfigId: 'kubernetes'
+        script {
+          kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")
         
       }
         }
   }
 }
 
-  
+}
+
           
