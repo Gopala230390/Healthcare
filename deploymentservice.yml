@@ -30,9 +30,9 @@ metadata:
   name: healthcare-service
 spec:
   selector:
-    app: healthcare-project 
-  type: Nodeport
+    app: healthcare-project
+  type: NodePort
   ports:
-  - protocol: TCP
-    port: 8084
-   
+    - protocol : TCP
+      port: 8084
+      targetPort: 8084
