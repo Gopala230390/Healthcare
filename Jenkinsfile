@@ -65,12 +65,10 @@ pipeline {
              ansiblePlaybook credentialsId: 'jenkinskey', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'healthcare-playbook.yml'
            }
                }*/
-    stage('Deploying App to Kubernetes') {
-      steps {
-        kubeconfig(serverUrl: 'https://192.168.49.2:8443') {
-  
-}
-        sh "kubectl apply -f deploymentservice.yml/"
+   stage('Deploy to Minikube') {
+            steps {
+                sh "kubectl config use-kubernetes"
+                sh "kubectl apply -f deploymentservice.yml/"
         }
       }
      }
