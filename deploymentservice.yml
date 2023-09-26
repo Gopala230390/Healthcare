@@ -1,34 +1,35 @@
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: healthcare-project
   labels:
-    app: front-end
+    app: healthcare-project
 spec:
   replicas: 2
   selector: 
     matchLabels:
-      app: healthcare
+      app: healthcare-project
  template:
     metadata:
       labels:
-        app: healthcare
+        app: healthcare-project
     spec:
       containers:
         - name: healthcare
-          image: swethamba859/healthcare:1.0 
+          image: swethamba859/healthcare-project:1.0 
           ports: 
            -containerPort: 8084
             name: http-web-app-01
 
 
----
 
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: healthcare
+  name: healthcare-service
 spec:
   type: NodePort
   selector: 
