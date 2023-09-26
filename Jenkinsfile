@@ -65,8 +65,7 @@ pipeline {
              ansiblePlaybook credentialsId: 'jenkinskey', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'healthcare-playbook.yml'
            }
                }*/
-   stage('Deploy to Minikube') {
-           stages {
+  
         stage('Deploy to Kubernetes') {
             steps {
                 script {
