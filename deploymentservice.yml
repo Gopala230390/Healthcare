@@ -17,7 +17,7 @@ spec:
         app: healthcare-project
     spec:
       containers:
-        - name: healthcare
+        - name: healthcare-project
           image: swethamba859/healthcare-project:1.0 
           ports: 
            -containerPort: 8084
