@@ -31,8 +31,8 @@ metadata:
 spec:
   selector:
     app: healthcare-project 
-  type: Loadbalancer
+  type: Nodeport
   ports:
   - protocol: TCP
     port: 8084
-    nodePort: 31110
+   
