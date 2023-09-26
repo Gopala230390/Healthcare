@@ -64,18 +64,18 @@ pipeline {
            steps {
              ansiblePlaybook credentialsId: 'jenkinskey', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'healthcare-playbook.yml'
            }
-               }*/
+               }
   
         stage('Deploying App to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")
+          kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")*/
         
       }
         }
-  }
-}
+  
 
-}
+
+
 
           
