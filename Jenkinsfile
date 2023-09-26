@@ -33,7 +33,7 @@ pipeline {
     
    stage('Docker Image Creation') {
       steps {
-        sh 'docker build -t swethamba859/healthcare-project:2.0 .'
+        sh 'docker build -t swethamba859/healthcare-project:3.0 .'
             }
     }
     stage('DockerLogin') {
@@ -46,7 +46,7 @@ pipeline {
   
     stage('Push Image to DockerHub') {
       steps {
-        sh 'docker push swethamba859/healthcare-project:2.0'
+        sh 'docker push swethamba859/healthcare-project:3.0'
             }
     } 
         stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
@@ -59,7 +59,7 @@ pipeline {
                 }
             }
         }
-     stage('deploy the application to kubernetes'){
+    /* stage('deploy the application to kubernetes'){
 steps{
   sh 'sudo chmod 600 ./jenkinskey.pem'    
   sh 'sudo scp -o StrictHostKeyChecking=no -i ./jenkinskey.pem deploymentservice.yml ubuntu@65.0.125.218:/home/ubuntu/'
@@ -74,7 +74,7 @@ script{
 }
 }
 }
-        /*stage ('Deploy into test-server using Ansible') {
+        stage ('Deploy into test-server using Ansible') {
            steps {
              ansiblePlaybook credentialsId: 'jenkinskey', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'healthcare-playbook.yml'
            }
