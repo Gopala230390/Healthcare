@@ -66,12 +66,16 @@ pipeline {
            }
                }*/
    stage('Deploy to Minikube') {
+           stages {
+        stage('Deploy to Kubernetes') {
             steps {
-                sh "kubectl config use-kubernetes"
-                sh "kubectl apply -f deploymentservice.yml/"
+                script {
+                    sh "kubectl --kubeconfig=${kubernetes} apply -f deploymentservice.yaml"
         }
       }
      }
 
         }
+   }
+
 
