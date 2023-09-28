@@ -62,14 +62,14 @@ pipeline {
      stage('deploy the application to kubernetes'){
 steps{
   sh 'sudo chmod 600 ./jenkinskey.pem'    
-  sh 'sudo scp -o StrictHostKeyChecking=no -i ./jenkinskey.pem deploymentservice.yml ubuntu@52.66.112.177:/home/ubuntu/'
+  sh 'sudo scp -o StrictHostKeyChecking=no -i ./jenkinskey.pem deploymentservice.yml ubuntu@65.2.184.9:/home/ubuntu/'
   
 script{
   try{
-  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@52.66.112.177 kubectl apply -f .'
+  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@65.2.184.9 kubectl apply -f .'
   }catch(error)
   {
-  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@52.66.112.177 kubectl apply -f .'
+  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@65.2.184.9 kubectl apply -f .'
   }
 }
 }
