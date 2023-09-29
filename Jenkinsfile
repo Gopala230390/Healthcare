@@ -14,7 +14,7 @@ pipeline {
    stage('CheckOut') {
       steps {
         echo 'Checkout the source code from GitHub'
-        git branch: 'main', url: 'https://github.com/swethaenukonda/Healthcare.git'
+        git branch: 'main', url: 'https://github.com/Gopala230390/Healthcare.git'
             }
     }
     
@@ -30,29 +30,32 @@ pipeline {
       publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Healthcare/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
             }
     }
-    
-   stage('Docker Image Creation') {
-      steps {
-        sh 'docker build -t swethamba859/healthcare-project:3.0 .'
-            }
-    }
-    stage('DockerLogin') {
-      steps {
-          withCredentials([usernamePassword(credentialsId: 'docker1hub', passwordVariable: 'docker_password', usernameVariable: 'docker_user')]) {
-         sh 'docker login -u ${docker_user} -p ${docker_password}'
-            }
-        }
-    } 
+ 
+   stage('Create Docker image of App') {
+       steps {
+         sh 'docker build -t gopala230390/health:4.0 .'
+             }
+         }
+
+    stage('Docker Image Push') {
+       steps {
+       withCredentials([usernamePassword(credentialsId: 'dockerpass', passwordVariable: 'dockerpass', usernameVariable: 'dockerhub')]) {
+         sh 'docker login -u ${dockerhub} -p ${dockerpass}'
+       }
+         sh 'docker push gopala230390/health:4.0'
+   }    
+     }   
   
     stage('Push Image to DockerHub') {
       steps {
-        sh 'docker push swethamba859/healthcare-project:3.0'
+        sh 'docker push gopala230390/health:4.0'
             }
     } 
+
         stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
             steps {
                 dir('my-serverfiles'){
-                sh 'sudo chmod 600 jenkinskey.pem'
+                sh 'sudo chmod 600 AWS-EC2-Key.pem'
                 sh 'terraform init'
                 sh 'terraform validate'
                 sh 'terraform apply --auto-approve'
@@ -61,7 +64,7 @@ pipeline {
         }
      stage('deploy the application to kubernetes'){
 steps{
-  sh 'sudo chmod 600 ./jenkinskey.pem'    
+  sh 'sudo chmod 600 ./AWS-EC2-Key.pem'    
   sh 'sudo scp -o StrictHostKeyChecking=no -i ./jenkinskey.pem deploymentservice.yml ubuntu@65.2.184.9:/home/ubuntu/'
   
 script{
