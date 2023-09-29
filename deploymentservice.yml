@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: healthcare-project
-        image: swethamba859/healthcare-project:3.0
+        image: gopala230390/health:4.0
         ports:
         - containerPort: 8084
         
