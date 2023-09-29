@@ -1,8 +1,7 @@
-resource "aws_instance" "kubernetes-server" {
- ami = "ami-0f5ee92e2d63afc18"
- instance_type = "t2.medium"
- vpc_security_group_ids = ["sg-0abf3a2f1984bfc7a"]
- key_name = "jenkinskey"
+resource "aws_instance" "test-server" {
+  ami           = "ami-053b0d53c279acc90" 
+  instance_type = "t2.micro" 
+  key_name = "AWS-EC2-Key"
    root_block_device {
       volume_size = 20
       volume_type = "gp2"
@@ -28,7 +27,7 @@ resource "aws_instance" "kubernetes-server" {
  type = "ssh"
  host = self.public_ip
  user = "ubuntu"
- private_key = file("./jenkinskey.pem")
+ private_key = file("./AWS-EC2-Key.pem")
  }
  }
  }
