@@ -69,10 +69,10 @@ steps{
   
 script{
   try{
-  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@65.2.184.9 kubectl apply -f .'
+  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@34.232.71.107 kubectl apply -f .'
   }catch(error)
   {
-  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@65.2.184.9 kubectl apply -f .'
+  sh 'ssh -o StrictHostKeyChecking=no -i ./jenkinskey.pem ubuntu@34.232.71.107 kubectl apply -f .'
   }
 }
 }
