@@ -65,7 +65,7 @@ pipeline {
      stage('deploy the application to kubernetes'){
 steps{
   sh 'sudo chmod 600 AWS-EC2-Key.pem'    
-  sh 'sudo scp -o StrictHostKeyChecking=no -i AWS-EC2-Key.pem deploymentservice.yml ubuntu@65.2.184.9:/home/ubuntu/'
+  sh 'sudo scp -o StrictHostKeyChecking=no -i AWS-EC2-Key.pem deploymentservice.yml ubuntu@34.232.71.107:/home/ubuntu/'
   
 script{
   try{
