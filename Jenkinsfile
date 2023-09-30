@@ -67,13 +67,7 @@ steps{
   sh 'sudo chmod 600 AWS-EC2-Key.pem'    
   sh 'sudo scp -o StrictHostKeyChecking=no -i AWS-EC2-Key.pem deploymentservice.yml ubuntu@54.162.226.88:/home/ubuntu/'
   
-script{
-  try{
-sh 'ssh -o StrictHostKeyChecking=no -i AWS-EC2-Key.pem ubuntu@54.162.226.88 kubectl apply -f .'
-}catch(error)
-{
-sh 'ssh -o StrictHostKeyChecking=no -i AWS-EC2-Key.pem ubuntu@54.162.226.88 kubectl apply -f .'
-}
+
   
 }
 
